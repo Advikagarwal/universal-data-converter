@@ -243,17 +243,39 @@ export class ConversionControllerImpl implements ConversionController {
       const lineIndex = error.line - 1;
       if (lineIndex >= 0 && lineIndex < lines.length) {
         const lineText = lines[lineIndex];
-        const highlightStart = Math.max(0, error.column - 1);
+        const highlightStart = Math.max(0, Math.min(error.column - 1, lineText.length - 1));
+        
         // Highlight the character or token at the error position
-        const highlightEnd = Math.min(lineText.length, highlightStart + 10);
-
-        highlights.push({
-          line: error.line,
-          column: error.column,
-          lineText,
-          highlightStart,
-          highlightEnd
-        });
+        // Ensure highlightEnd is always greater than highlightStart
+        // If error is at or beyond end of line, highlight the last few characters
+        let highlightEnd: number;
+        if (highlightStart >= lineText.length - 1) {
+          // Error at end of line - highlight last character or more
+          highlightEnd = lineText.length;
+          // Adjust start to ensure we have something to highlight
+          const adjustedStart = Math.max(0, highlightEnd - 5);
+          highlights.push({
+            line: error.line,
+            column: error.column,
+            lineText,
+            highlightStart: adjustedStart,
+            highlightEnd
+          });
+        } else {
+          // Error in middle of line - highlight from error position
+          highlightEnd = Math.min(lineText.length, highlightStart + 10);
+          // Ensure end is always greater than start
+          if (highlightEnd <= highlightStart) {
+            highlightEnd = highlightStart + 1;
+          }
+          highlights.push({
+            line: error.line,
+            column: error.column,
+            lineText,
+            highlightStart,
+            highlightEnd
+          });
+        }
       }
     }
 

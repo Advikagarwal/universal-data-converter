@@ -1,0 +1,144 @@
+.options-panel {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.options-toggle {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.options-toggle:hover {
+  background: #f8f9fa;
+}
+
+.options-toggle-icon {
+  color: #667eea;
+  font-size: 0.8rem;
+  transition: transform 0.2s;
+}
+
+.options-toggle-text {
+  flex: 1;
+  text-align: left;
+}
+
+.options-content {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.options-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.options-section-title {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #667eea;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.option-item input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.option-item label {
+  cursor: pointer;
+  user-select: none;
+}
+
+.option-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 0.25rem;
+  display: block;
+  width: 100%;
+}
+
+.option-input {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  width: 80px;
+  transition: border-color 0.2s;
+}
+
+.option-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.option-select {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.option-select:hover {
+  border-color: #adb5bd;
+}
+
+.option-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .options-toggle {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .options-content {
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+  }
+  
+  .option-item {
+    font-size: 0.85rem;
+  }
+  
+  .option-input,
+  .option-select {
+    font-size: 0.85rem;
+  }
+}

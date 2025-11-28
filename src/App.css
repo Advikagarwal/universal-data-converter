@@ -30,7 +30,8 @@
   grid-template-columns: 1fr auto 1fr;
   gap: 1.5rem;
   padding: 1.5rem;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
   animation: slideUp 0.4s ease-out;
 }
@@ -51,8 +52,29 @@
   flex-direction: column;
   gap: 1.25rem;
   min-width: 0;
-  overflow: hidden;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
   animation: slideIn 0.5s ease-out;
+  padding-right: 0.5rem;
+}
+
+/* Custom scrollbar for content sections */
+.content-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-section::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content-section::-webkit-scrollbar-thumb {
+  background: var(--bg-hover);
+  border-radius: 4px;
+}
+
+.content-section::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
 }
 
 @keyframes slideIn {
@@ -82,10 +104,27 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
     overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .content-section {
+    overflow-y: visible;
+    min-height: auto;
   }
 
   .content-section:nth-child(2) {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-grid {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .content-section {
+    gap: 1rem;
   }
 }
 

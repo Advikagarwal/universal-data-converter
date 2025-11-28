@@ -53,6 +53,11 @@ a:hover {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -60,6 +65,8 @@ body {
   min-height: 100vh;
   overflow: hidden;
   background: var(--bg-primary);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
 }
 
 h1 {
@@ -113,15 +120,27 @@ button:disabled {
 
 ::-webkit-scrollbar-track {
   background: var(--bg-secondary);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--bg-hover);
   border-radius: 5px;
+  border: 2px solid var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--border-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--accent-primary);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-hover) var(--bg-secondary);
 }
 
 /* Selection styling */
